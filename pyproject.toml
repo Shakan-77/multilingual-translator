@@ -1,0 +1,4 @@
+[tool.pytest.ini_options]
+markers = ["slow: downloads models and runs real translations"]
+testpaths = ["tests"]
+pythonpath = ["."]

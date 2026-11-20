@@ -1,0 +1,12 @@
+# Install PyTorch first for GPU support, e.g.:
+#   pip install torch --index-url https://download.pytorch.org/whl/cu126
+torch>=2.4
+transformers>=4.45
+sentencepiece
+sacremoses
+gradio>=5.0
+librosa
+soundfile
+datasets
+sacrebleu
+pytest

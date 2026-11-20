@@ -1,0 +1,9 @@
+.venv/
+.hf_cache/
+.tmp/
+outputs/
+__pycache__/
+*.pyc
+.pytest_cache/
+.gradio/
+flagged/
