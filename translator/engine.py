@@ -49,7 +49,7 @@ class Translator:
         name = model_name(src, tgt)
         if name not in self._cache:
             tokenizer = MarianTokenizer.from_pretrained(name)
-            model = MarianMTModel.from_pretrained(name).to(self.device).eval()
+            model = MarianMTModel.from_pretrained(name, use_safetensors=True).to(self.device).eval()
             self._cache[name] = (tokenizer, model)
         return self._cache[name]
 
