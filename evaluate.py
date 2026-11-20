@@ -36,7 +36,10 @@ def main() -> None:
     translator = Translator()
     rows = []
     for lang in PAIRS:
-        data = load_dataset("wmt/wmt14", f"{lang}-en", split=f"test[:{args.samples}]")
+        # Stream only the test split: a plain load_dataset() would download and convert the
+        # full multi-GB training data for the pair even though we read just a few hundred lines.
+        stream = load_dataset("wmt/wmt14", f"{lang}-en", split="test", streaming=True)
+        data = list(stream.take(args.samples))
         foreign = [ex["translation"][lang] for ex in data]
         english = [ex["translation"]["en"] for ex in data]
         for src, tgt, srcs, refs in [(lang, "en", foreign, english), ("en", lang, english, foreign)]:
